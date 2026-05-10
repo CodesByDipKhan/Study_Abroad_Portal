@@ -5,6 +5,7 @@ import { User } from './users/entities/user.entity';
 import { Scholarship } from './scholarships/entities/scholarship.entity';
 import { Application } from './applications/entities/application.entity';
 import { Document } from './documents/entities/document.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { Document } from './documents/entities/document.entity';
       }),
       inject: [ConfigService],
     }),
+    AuthModule,
   ],
   controllers: [],
   providers: [],

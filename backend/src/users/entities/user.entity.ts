@@ -23,11 +23,11 @@ export class User {
     @Column({ type: 'enum', enum: StudyLevel, nullable: true })
     studyLevel: StudyLevel;
 
-    @Column({ nullable: true })
-    resetToken: string;
+    @Column({ type: 'varchar', nullable: true })
+    resetToken: string | null;
 
-    @Column({ nullable: true, type: 'timestamp' })
-    resetTokenExpiry: Date;
+    @Column({ type: 'timestamp', nullable: true })
+    resetTokenExpiry: Date | null;
 
     @CreateDateColumn()
     createdAt: Date;

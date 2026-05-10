@@ -52,12 +52,12 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "studyLevel", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: 'varchar', nullable: true }),
+    __metadata("design:type", Object)
 ], User.prototype, "resetToken", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true, type: 'timestamp' }),
-    __metadata("design:type", Date)
+    (0, typeorm_1.Column)({ type: 'timestamp', nullable: true }),
+    __metadata("design:type", Object)
 ], User.prototype, "resetTokenExpiry", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),

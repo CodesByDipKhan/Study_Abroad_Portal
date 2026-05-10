@@ -14,6 +14,7 @@ const user_entity_1 = require("./users/entities/user.entity");
 const scholarship_entity_1 = require("./scholarships/entities/scholarship.entity");
 const application_entity_1 = require("./applications/entities/application.entity");
 const document_entity_1 = require("./documents/entities/document.entity");
+const auth_module_1 = require("./auth/auth.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -38,6 +39,7 @@ exports.AppModule = AppModule = __decorate([
                 }),
                 inject: [config_1.ConfigService],
             }),
+            auth_module_1.AuthModule,
         ],
         controllers: [],
         providers: [],

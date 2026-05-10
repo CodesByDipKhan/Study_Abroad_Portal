@@ -8,8 +8,8 @@ export declare class User {
     password: string;
     role: Role;
     studyLevel: StudyLevel;
-    resetToken: string;
-    resetTokenExpiry: Date;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
     createdAt: Date;
     applications: Application[];
 }
