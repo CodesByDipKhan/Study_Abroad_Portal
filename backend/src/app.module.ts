@@ -6,6 +6,7 @@ import { Scholarship } from './scholarships/entities/scholarship.entity';
 import { Application } from './applications/entities/application.entity';
 import { Document } from './documents/entities/document.entity';
 import { AuthModule } from './auth/auth.module';
+import { ScholarshipsModule } from './scholarships/scholarships.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AuthModule } from './auth/auth.module';
       inject: [ConfigService],
     }),
     AuthModule,
+    ScholarshipsModule,
   ],
   controllers: [],
   providers: [],

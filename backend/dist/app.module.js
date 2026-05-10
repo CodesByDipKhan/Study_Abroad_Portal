@@ -15,6 +15,7 @@ const scholarship_entity_1 = require("./scholarships/entities/scholarship.entity
 const application_entity_1 = require("./applications/entities/application.entity");
 const document_entity_1 = require("./documents/entities/document.entity");
 const auth_module_1 = require("./auth/auth.module");
+const scholarships_module_1 = require("./scholarships/scholarships.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -40,6 +41,7 @@ exports.AppModule = AppModule = __decorate([
                 inject: [config_1.ConfigService],
             }),
             auth_module_1.AuthModule,
+            scholarships_module_1.ScholarshipsModule,
         ],
         controllers: [],
         providers: [],
