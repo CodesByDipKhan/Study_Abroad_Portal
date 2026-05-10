@@ -7,6 +7,7 @@ import { Application } from './applications/entities/application.entity';
 import { Document } from './documents/entities/document.entity';
 import { AuthModule } from './auth/auth.module';
 import { ScholarshipsModule } from './scholarships/scholarships.module';
+import { ApplicationsModule } from './applications/applications.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ScholarshipsModule } from './scholarships/scholarships.module';
     }),
     AuthModule,
     ScholarshipsModule,
+    ApplicationsModule,
   ],
   controllers: [],
   providers: [],
