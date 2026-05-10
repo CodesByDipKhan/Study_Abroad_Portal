@@ -10,6 +10,10 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
+const user_entity_1 = require("./users/entities/user.entity");
+const scholarship_entity_1 = require("./scholarships/entities/scholarship.entity");
+const application_entity_1 = require("./applications/entities/application.entity");
+const document_entity_1 = require("./documents/entities/document.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -28,7 +32,7 @@ exports.AppModule = AppModule = __decorate([
                     username: configService.get('DB_USERNAME'),
                     password: configService.get('DB_PASSWORD'),
                     database: configService.get('DB_NAME'),
-                    entities: [],
+                    entities: [user_entity_1.User, scholarship_entity_1.Scholarship, application_entity_1.Application, document_entity_1.Document],
                     synchronize: configService.get('NODE_ENV') !== 'production',
                     logging: configService.get('NODE_ENV') === 'development',
                 }),
