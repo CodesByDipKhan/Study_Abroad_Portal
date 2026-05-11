@@ -8,6 +8,7 @@ import { Document } from './documents/entities/document.entity';
 import { AuthModule } from './auth/auth.module';
 import { ScholarshipsModule } from './scholarships/scholarships.module';
 import { ApplicationsModule } from './applications/applications.module';
+import { DocumentsModule } from './documents/documents.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { ApplicationsModule } from './applications/applications.module';
     AuthModule,
     ScholarshipsModule,
     ApplicationsModule,
+    DocumentsModule,
   ],
   controllers: [],
   providers: [],
