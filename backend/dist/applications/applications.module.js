@@ -14,12 +14,13 @@ const applications_controller_1 = require("./applications.controller");
 const application_entity_1 = require("./entities/application.entity");
 const scholarship_entity_1 = require("../scholarships/entities/scholarship.entity");
 const user_entity_1 = require("../users/entities/user.entity");
+const mail_module_1 = require("../mail/mail.module");
 let ApplicationsModule = class ApplicationsModule {
 };
 exports.ApplicationsModule = ApplicationsModule;
 exports.ApplicationsModule = ApplicationsModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([application_entity_1.Application, scholarship_entity_1.Scholarship, user_entity_1.User])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([application_entity_1.Application, scholarship_entity_1.Scholarship, user_entity_1.User]), mail_module_1.MailModule],
         controllers: [applications_controller_1.ApplicationsController],
         providers: [applications_service_1.ApplicationsService],
     })

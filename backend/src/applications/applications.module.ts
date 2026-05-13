@@ -5,9 +5,10 @@ import { ApplicationsController } from './applications.controller';
 import { Application } from './entities/application.entity';
 import { Scholarship } from '../scholarships/entities/scholarship.entity';
 import { User } from '../users/entities/user.entity';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Application, Scholarship, User])],
+  imports: [TypeOrmModule.forFeature([Application, Scholarship, User]), MailModule],
   controllers: [ApplicationsController],
   providers: [ApplicationsService],
 })

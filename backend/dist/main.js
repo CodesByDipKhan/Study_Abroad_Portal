@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@nestjs/core");
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const path_1 = require("path");
 const app_module_1 = require("./app.module");
 async function bootstrap() {
@@ -18,8 +19,17 @@ async function bootstrap() {
         origin: 'http://localhost:3001',
         credentials: true,
     });
+    const config = new swagger_1.DocumentBuilder()
+        .setTitle('Study Abroad Consultancy Portal API')
+        .setDescription('RESTful API for managing scholarships, applications, and documents')
+        .setVersion('1.0')
+        .addBearerAuth()
+        .build();
+    const document = swagger_1.SwaggerModule.createDocument(app, config);
+    swagger_1.SwaggerModule.setup('api/docs', app, document);
     await app.listen(3000);
     console.log('Backend running on http://localhost:3000');
+    console.log('Swagger UI: http://localhost:3000/api/docs');
     console.log('Uploads served from /uploads');
 }
 bootstrap();

@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { ScholarshipsModule } from './scholarships/scholarships.module';
 import { ApplicationsModule } from './applications/applications.module';
 import { DocumentsModule } from './documents/documents.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { DocumentsModule } from './documents/documents.module';
     ScholarshipsModule,
     ApplicationsModule,
     DocumentsModule,
+    MailModule,
   ],
   controllers: [],
   providers: [],

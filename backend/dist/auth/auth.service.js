@@ -51,16 +51,17 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const jwt_1 = require("@nestjs/jwt");
 const bcrypt = __importStar(require("bcryptjs"));
-const user_entity_1 = require("../users/entities/user.entity");
 const crypto = __importStar(require("crypto"));
-const common_2 = require("@nestjs/common");
-const typeorm_3 = require("typeorm");
+const user_entity_1 = require("../users/entities/user.entity");
+const mail_service_1 = require("../mail/mail.service");
 let AuthService = class AuthService {
     userRepository;
     jwtService;
-    constructor(userRepository, jwtService) {
+    mailService;
+    constructor(userRepository, jwtService, mailService) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
+        this.mailService = mailService;
     }
     async register(registerDto) {
         const { email, password, name, role, studyLevel } = registerDto;
@@ -113,20 +114,26 @@ let AuthService = class AuthService {
         user.resetTokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
         await this.userRepository.save(user);
         const resetLink = `http://localhost:3001/reset-password?token=${plainToken}`;
-        console.log(`Reset link for ${email}: ${resetLink}`);
+        try {
+            await this.mailService.sendResetPassword(user, resetLink);
+            console.log(`Reset email sent to ${email}`);
+        }
+        catch (error) {
+            console.error('Failed to send reset email:', error.message);
+        }
         return { message: 'If this email exists, a reset link has been sent' };
     }
     async resetPassword(resetPasswordDto) {
         const { token, newPassword } = resetPasswordDto;
         const user = await this.userRepository.findOne({
-            where: { resetTokenExpiry: (0, typeorm_3.MoreThan)(new Date()) },
+            where: { resetTokenExpiry: (0, typeorm_2.MoreThan)(new Date()) },
         });
         if (!user || !user.resetToken) {
-            throw new common_2.BadRequestException('Invalid or expired token');
+            throw new common_1.BadRequestException('Invalid or expired token');
         }
         const isTokenValid = await bcrypt.compare(token, user.resetToken);
         if (!isTokenValid) {
-            throw new common_2.BadRequestException('Invalid or expired token');
+            throw new common_1.BadRequestException('Invalid or expired token');
         }
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         user.password = hashedPassword;
@@ -141,6 +148,7 @@ exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(user_entity_1.User)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
-        jwt_1.JwtService])
+        jwt_1.JwtService,
+        mail_service_1.MailService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

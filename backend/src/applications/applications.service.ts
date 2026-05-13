@@ -8,6 +8,7 @@ import { ApplicationQueryDto } from './dto/application-query.dto';
 import { Scholarship } from '../scholarships/entities/scholarship.entity';
 import { User } from '../users/entities/user.entity';
 import { ApplicationStatus } from '../common/enums/status.enum';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class ApplicationsService {
@@ -18,6 +19,7 @@ export class ApplicationsService {
         private scholarshipRepository: Repository<Scholarship>,
         @InjectRepository(User)
         private userRepository: Repository<User>,
+        private mailService: MailService, // Added mail service
     ) { }
 
     async create(userId: string, createDto: CreateApplicationDto) {
@@ -43,7 +45,7 @@ export class ApplicationsService {
             throw new NotFoundException('User not found');
         }
 
-        // Create application using relations (not just IDs)
+        // Create application using relations
         const application = this.applicationRepository.create({
             user,
             scholarship,
@@ -52,6 +54,13 @@ export class ApplicationsService {
 
         const saved = await this.applicationRepository.save(application);
         console.log(`Application created: ${saved.id} for user ${userId}`);
+
+        // Send email notification
+        try {
+            await this.mailService.sendApplicationReceived(user, scholarship);
+        } catch (error) {
+            console.error('Failed to send application received email:', error.message);
+        }
 
         return saved;
     }
@@ -108,9 +117,18 @@ export class ApplicationsService {
         if (!application) {
             throw new NotFoundException('Application not found');
         }
+        const oldStatus = application.status;
         application.status = updateDto.status;
         const updated = await this.applicationRepository.save(application);
-        console.log(`Application ${id} status changed to ${updateDto.status}`);
+        console.log(`Application ${id} status changed from ${oldStatus} to ${updateDto.status}`);
+
+        // Send email notification on status change
+        try {
+            await this.mailService.sendStatusUpdated(application.user, application.scholarship, updateDto.status);
+        } catch (error) {
+            console.error('Failed to send status update email:', error.message);
+        }
+
         return updated;
     }
 }

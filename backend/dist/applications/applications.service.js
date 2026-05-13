@@ -20,14 +20,17 @@ const application_entity_1 = require("./entities/application.entity");
 const scholarship_entity_1 = require("../scholarships/entities/scholarship.entity");
 const user_entity_1 = require("../users/entities/user.entity");
 const status_enum_1 = require("../common/enums/status.enum");
+const mail_service_1 = require("../mail/mail.service");
 let ApplicationsService = class ApplicationsService {
     applicationRepository;
     scholarshipRepository;
     userRepository;
-    constructor(applicationRepository, scholarshipRepository, userRepository) {
+    mailService;
+    constructor(applicationRepository, scholarshipRepository, userRepository, mailService) {
         this.applicationRepository = applicationRepository;
         this.scholarshipRepository = scholarshipRepository;
         this.userRepository = userRepository;
+        this.mailService = mailService;
     }
     async create(userId, createDto) {
         const { scholarshipId } = createDto;
@@ -52,6 +55,12 @@ let ApplicationsService = class ApplicationsService {
         });
         const saved = await this.applicationRepository.save(application);
         console.log(`Application created: ${saved.id} for user ${userId}`);
+        try {
+            await this.mailService.sendApplicationReceived(user, scholarship);
+        }
+        catch (error) {
+            console.error('Failed to send application received email:', error.message);
+        }
         return saved;
     }
     async findMyApplications(userId) {
@@ -101,9 +110,16 @@ let ApplicationsService = class ApplicationsService {
         if (!application) {
             throw new common_1.NotFoundException('Application not found');
         }
+        const oldStatus = application.status;
         application.status = updateDto.status;
         const updated = await this.applicationRepository.save(application);
-        console.log(`Application ${id} status changed to ${updateDto.status}`);
+        console.log(`Application ${id} status changed from ${oldStatus} to ${updateDto.status}`);
+        try {
+            await this.mailService.sendStatusUpdated(application.user, application.scholarship, updateDto.status);
+        }
+        catch (error) {
+            console.error('Failed to send status update email:', error.message);
+        }
         return updated;
     }
 };
@@ -115,6 +131,7 @@ exports.ApplicationsService = ApplicationsService = __decorate([
     __param(2, (0, typeorm_1.InjectRepository)(user_entity_1.User)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
         typeorm_2.Repository,
-        typeorm_2.Repository])
+        typeorm_2.Repository,
+        mail_service_1.MailService])
 ], ApplicationsService);
 //# sourceMappingURL=applications.service.js.map

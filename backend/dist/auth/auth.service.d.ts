@@ -5,10 +5,12 @@ import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { MailService } from '../mail/mail.service';
 export declare class AuthService {
     private userRepository;
     private jwtService;
-    constructor(userRepository: Repository<User>, jwtService: JwtService);
+    private mailService;
+    constructor(userRepository: Repository<User>, jwtService: JwtService, mailService: MailService);
     register(registerDto: RegisterDto): Promise<{
         message: string;
     }>;

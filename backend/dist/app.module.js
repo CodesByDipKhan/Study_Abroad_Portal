@@ -18,6 +18,7 @@ const auth_module_1 = require("./auth/auth.module");
 const scholarships_module_1 = require("./scholarships/scholarships.module");
 const applications_module_1 = require("./applications/applications.module");
 const documents_module_1 = require("./documents/documents.module");
+const mail_module_1 = require("./mail/mail.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -46,6 +47,7 @@ exports.AppModule = AppModule = __decorate([
             scholarships_module_1.ScholarshipsModule,
             applications_module_1.ApplicationsModule,
             documents_module_1.DocumentsModule,
+            mail_module_1.MailModule,
         ],
         controllers: [],
         providers: [],
