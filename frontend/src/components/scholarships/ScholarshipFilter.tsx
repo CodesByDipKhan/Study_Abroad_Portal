@@ -36,9 +36,13 @@ export default function ScholarshipFilter({ onFilter }: ScholarshipFilterProps) 
                     placeholder="Country"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="px-3 py-2 border rounded"
+                    className="px-3 py-2 border rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <select value={level} onChange={(e) => setLevel(e.target.value)} className="px-3 py-2 border rounded">
+                <select
+                    value={level}
+                    onChange={(e) => setLevel(e.target.value)}
+                    className="px-3 py-2 border rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
                     <option value="">All Levels</option>
                     <option value="UG">Undergraduate (UG)</option>
                     <option value="PG">Postgraduate (PG)</option>
@@ -49,13 +53,20 @@ export default function ScholarshipFilter({ onFilter }: ScholarshipFilterProps) 
                     placeholder="Search by title"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="px-3 py-2 border rounded"
+                    className="px-3 py-2 border rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <div className="flex gap-2">
-                    <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    <button
+                        type="submit"
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all duration-200 hover:scale-105 cursor-pointer"
+                    >
                         Filter
                     </button>
-                    <button type="button" onClick={handleReset} className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400">
+                    <button
+                        type="button"
+                        onClick={handleReset}
+                        className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition-all duration-200 hover:scale-105 cursor-pointer"
+                    >
                         Reset
                     </button>
                 </div>

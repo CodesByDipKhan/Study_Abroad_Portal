@@ -45,7 +45,7 @@ export default function ScholarshipsPage() {
             <Navbar />
             <div className="min-h-screen bg-gray-50 py-8">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-3xl font-bold mb-6">Available Scholarships</h1>
+                    <h1 className="text-3xl font-bold mb-6 text-gray-900">Available Scholarships</h1>
                     <ScholarshipFilter onFilter={handleFilter} />
                     {loading ? (
                         <LoadingSpinner />
@@ -61,15 +61,15 @@ export default function ScholarshipsPage() {
                                     <button
                                         onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                                         disabled={currentPage === 1}
-                                        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                                        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 text-gray-900"
                                     >
                                         Previous
                                     </button>
-                                    <span className="px-4 py-2">Page {currentPage} of {totalPages}</span>
+                                    <span className="px-4 py-2 text-gray-900">Page {currentPage} of {totalPages}</span>
                                     <button
                                         onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                                         disabled={currentPage === totalPages}
-                                        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                                        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 text-gray-900"
                                     >
                                         Next
                                     </button>

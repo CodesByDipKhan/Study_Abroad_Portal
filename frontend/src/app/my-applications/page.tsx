@@ -39,11 +39,11 @@ export default function MyApplicationsPage() {
             <Navbar />
             <div className="min-h-screen bg-gray-50 py-8">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-3xl font-bold mb-6">My Applications</h1>
+                    <h1 className="text-3xl font-bold mb-6 text-gray-900">My Applications</h1>
                     {loading ? (
                         <LoadingSpinner />
                     ) : applications.length === 0 ? (
-                        <p className="text-gray-500">You haven't applied to any scholarships yet.</p>
+                        <p className="text-gray-700">You haven't applied to any scholarships yet.</p>
                     ) : (
                         applications.map((app) => (
                             <div key={app.id} className="mb-6 border rounded-lg p-4 bg-white shadow">

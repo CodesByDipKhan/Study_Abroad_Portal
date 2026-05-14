@@ -41,7 +41,7 @@ export default function ScholarshipDetailPage() {
                     ) : scholarship ? (
                         <ScholarshipDetail scholarship={scholarship} />
                     ) : (
-                        <p className="text-center text-red-500">Scholarship not found</p>
+                        <p className="text-center text-red-600">Scholarship not found</p>
                     )}
                 </div>
             </div>
