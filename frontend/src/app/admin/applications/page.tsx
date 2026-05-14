@@ -20,7 +20,7 @@ export default function AdminApplicationsPage() {
     const fetchApplications = async () => {
         setLoading(true);
         try {
-            const response = await axiosInstance.get('/applications?limit=100');
+            const response = await axiosInstance.get('/applications?limit=50');
             setApplications(response.data.data);
         } catch (error) {
             console.error('Failed to fetch applications', error);
@@ -58,7 +58,7 @@ export default function AdminApplicationsPage() {
                 <div className="flex flex-1">
                     <Sidebar />
                     <main className="flex-1 p-6 bg-gray-100">
-                        <h1 className="text-2xl font-bold mb-6">All Applications</h1>
+                        <h1 className="text-2xl font-bold mb-6 text-gray-900">All Applications</h1>
                         {loading ? (
                             <LoadingSpinner />
                         ) : (

@@ -51,7 +51,7 @@ export default function AdminDashboardPage() {
                 <div className="flex flex-1">
                     <Sidebar />
                     <main className="flex-1 p-6 bg-gray-100">
-                        <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
+                        <h1 className="text-2xl font-bold mb-6 text-gray-900">Dashboard</h1>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                             <StatsCard title="Total Aspirants" value={data?.totalAspirants || 0} color="border-blue-500" />
                             <StatsCard title="Total Scholarships" value={data?.totalScholarships || 0} color="border-green-500" />

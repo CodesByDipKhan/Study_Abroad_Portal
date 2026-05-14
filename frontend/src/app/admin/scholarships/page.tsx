@@ -19,7 +19,7 @@ export default function AdminScholarshipsPage() {
     const fetchScholarships = async () => {
         setLoading(true);
         try {
-            const response = await axiosInstance.get('/scholarships?limit=100');
+            const response = await axiosInstance.get('/scholarships?limit=50');
             setScholarships(response.data.data);
         } catch (error) {
             console.error('Failed to fetch scholarships', error);
@@ -62,10 +62,10 @@ export default function AdminScholarshipsPage() {
                     <Sidebar />
                     <main className="flex-1 p-6 bg-gray-100">
                         <div className="flex justify-between items-center mb-6">
-                            <h1 className="text-2xl font-bold">Manage Scholarships</h1>
+                            <h1 className="text-2xl font-bold text-gray-900">Manage Scholarships</h1>
                             <button
                                 onClick={() => setShowForm(true)}
-                                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50 cursor-pointer"
                             >
                                 + Add Scholarship
                             </button>
@@ -77,25 +77,25 @@ export default function AdminScholarshipsPage() {
                                 <table className="min-w-full">
                                     <thead className="bg-gray-100">
                                         <tr>
-                                            <th className="px-4 py-2 text-left">Title</th>
-                                            <th className="px-4 py-2 text-left">University</th>
-                                            <th className="px-4 py-2 text-left">Country</th>
-                                            <th className="px-4 py-2 text-left">Level</th>
-                                            <th className="px-4 py-2 text-left">Deadline</th>
-                                            <th className="px-4 py-2">Actions</th>
+                                            <th className="px-4 py-2 text-left text-gray-900">Title</th>
+                                            <th className="px-4 py-2 text-left text-gray-900">University</th>
+                                            <th className="px-4 py-2 text-left text-gray-900">Country</th>
+                                            <th className="px-4 py-2 text-left text-gray-900">Level</th>
+                                            <th className="px-4 py-2 text-left text-gray-900">Deadline</th>
+                                            <th className="px-4 py-2 text-gray-900">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {scholarships.map((sch) => (
                                             <tr key={sch.id} className="border-t">
-                                                <td className="px-4 py-2">{sch.title}</td>
-                                                <td className="px-4 py-2">{sch.university}</td>
-                                                <td className="px-4 py-2">{sch.country}</td>
-                                                <td className="px-4 py-2">{sch.level}</td>
-                                                <td className="px-4 py-2">{new Date(sch.deadline).toLocaleDateString()}</td>
+                                                <td className="px-4 py-2 text-gray-900">{sch.title}</td>
+                                                <td className="px-4 py-2 text-gray-900">{sch.university}</td>
+                                                <td className="px-4 py-2 text-gray-900">{sch.country}</td>
+                                                <td className="px-4 py-2 text-gray-900">{sch.level}</td>
+                                                <td className="px-4 py-2 text-gray-900">{new Date(sch.deadline).toLocaleDateString()}</td>
                                                 <td className="px-4 py-2 text-center space-x-2">
-                                                    <button onClick={() => handleEdit(sch)} className="text-blue-600 hover:underline">Edit</button>
-                                                    <button onClick={() => handleDelete(sch.id)} className="text-red-600 hover:underline">Delete</button>
+                                                    <button onClick={() => handleEdit(sch)} className="text-blue-600 hover:underline cursor-pointer">Edit</button>
+                                                    <button onClick={() => handleDelete(sch.id)} className="text-red-600 hover:underline cursor-pointer">Delete</button>
                                                 </td>
                                             </tr>
                                         ))}

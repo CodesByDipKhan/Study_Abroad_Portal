@@ -10,6 +10,8 @@ import { ScholarshipsModule } from './scholarships/scholarships.module';
 import { ApplicationsModule } from './applications/applications.module';
 import { DocumentsModule } from './documents/documents.module';
 import { MailModule } from './mail/mail.module';
+import { AdminModule } from './admin/admin.module';
+
 
 @Module({
   imports: [
@@ -36,6 +38,7 @@ import { MailModule } from './mail/mail.module';
     ApplicationsModule,
     DocumentsModule,
     MailModule,
+    AdminModule
   ],
   controllers: [],
   providers: [],
