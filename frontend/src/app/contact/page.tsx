@@ -8,7 +8,12 @@ export default function ContactPage() {
             <div className="min-h-screen bg-gray-50">
                 <div className="container mx-auto px-4 py-16">
                     <div className="mb-4">
-                        <a href="/" className="text-blue-600 hover:underline">← Back to Home</a>
+                        <a
+                            href="/"
+                            className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700 inline-block transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-red-500/50"
+                        >
+                            Back
+                        </a>
                     </div>
                     <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">Contact Us</h1>
                     <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">

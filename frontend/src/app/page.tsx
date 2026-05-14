@@ -13,17 +13,17 @@ export default function Home() {
           <p className="text-xl text-gray-600 mb-8">
             Find and apply to scholarships worldwide. Track your applications.
           </p>
-          <div className="space-x-4">
-            <a href="/login" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+          <div className="flex flex-col items-center space-y-4 mt-8">
+            <a href="/login" className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 w-64 text-center transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50">
               Login
             </a>
-            <a href="/register" className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">
+            <a href="/register" className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 w-64 text-center transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50">
               Register
             </a>
-            <a href="/about" className="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700">
+            <a href="/about" className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 w-64 text-center transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50">
               About Us
             </a>
-            <a href="/contact" className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700">
+            <a href="/contact" className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 w-64 text-center transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50">
               Contact Us
             </a>
           </div>
